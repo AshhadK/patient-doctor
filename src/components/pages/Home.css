@@ -1,0 +1,217 @@
+body {
+	font-family: 'Poppins', sans-serif;
+	background-color: #ccc !important;
+}
+#main-home-page {
+	overflow: hidden;
+}
+.fwb {
+	font-weight: 700;
+}
+.main-home {
+	background-color: #ccc;
+	background: linear-gradient(rgba(141, 153, 174, 0.8), rgba(141, 153, 174, 0.5)),
+		url('https://simplybook.me/build/images/dental.0419f54f.jpg') no-repeat fixed;
+
+	/* background:  linear-gradient(rgb(3, 3, 3), rgb(104, 104, 104)), url('https://simplybook.me/build/images/dental.0419f54f.jpg'); */
+	overflow-y: scroll;
+	overflow-x: hidden;
+	height: 100vh;
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 100vw;
+}
+.mybtn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgb(218, 218, 218);
+	border-radius: 15px;
+	box-shadow: 8px 8px 10px rgba(4, 57, 107, 0.3);
+	cursor: pointer;
+	position: relative;
+	animation: back 500ms 1;
+	padding: 12px 18px;
+}
+.appointments-item-btn {
+	border-radius: 0;
+	padding: 8px 15px;
+	color: #fff;
+	outline: 0;
+	background-image: linear-gradient(to right, #19d3b0, #0fcfe8);
+	text-transform: uppercase;
+}
+.card {
+	border: none;
+}
+.cp {
+	color: #10cfe5;
+}
+.appointments-item p {
+	font-size: 14px;
+}
+
+.mybtn:hover {
+	color: #fff;
+	background-image: #ccc;
+	color: black;
+}
+.appointments-item-btn:hover {
+	color: #fff;
+	background-image: linear-gradient(to left, #19d3b0, #0fcfe8);
+}
+.home-primary:hover {
+	background-image: linear-gradient(to right, #19d3b0, #0fcfe8);
+}
+.home-location:hover {
+	background-image: linear-gradient(to right, #19d3b0, #0fcfe8);
+	transition: 1s;
+}
+.main-home-nav {
+	padding: 30px 30px !important;
+	padding-top: 35px;
+}
+#navbarNav {
+	z-index: 999;
+	width: 100vw;
+}
+.header-content {
+	margin-top: 100px;
+}
+.sidebar-content p {
+	line-height: 2;
+}
+.sidebar-image {
+	background: url('https://i.ibb.co/wsZ6Z1P/main-home.png');
+	height: 800px;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+#nav1 {
+	height: 100px;
+	background: #20b2aa;
+	width: 100vw;
+}
+section.header-bottom-content-aria {
+	margin-top: -150px;
+	background-color: #efefef;
+}
+.home-location {
+	cursor: pointer;
+	transition: 0.3s;
+	background-color: #b1b1b1;
+	box-shadow: 8px 8px 10px rgba(4, 57, 107, 0.3);
+	color: #000;
+}
+.home-primary {
+	cursor: pointer;
+	transition: 0.3s;
+	background-color: #b1b1b1;
+	box-shadow: 8px 8px 10px rgba(4, 57, 107, 0.3);
+	color: #000;
+}
+.main-home-icon {
+	font-size: 50px;
+	color: #000;
+}
+.home-icons-container h6 {
+	font-weight: 700;
+	padding-top: 5px;
+}
+.home-icons-container p {
+	font-size: 12px;
+	padding-right: 5px;
+}
+.availableAppoitments-container {
+	margin-top: -150px;
+}
+
+.nice-dates-day:before {
+	background: #19d3b0;
+}
+.myclass {
+	display: block !important;
+}
+/* 
+
+<img src="https://i.ibb.co/VL6Vc6Q/login.png" alt="login" border="0">
+<img src="https://i.ibb.co/wsZ6Z1P/main-home.png" alt="main-home" border="0">
+<img src="https://i.ibb.co/8YJs3MY/main-home2.png" alt="main-home2" border="0">
+
+
+*/
+
+.button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #dadada;
+	border-radius: 15px;
+	box-shadow: 8px 8px 10px rgba(4, 57, 107, 0.3);
+	cursor: pointer;
+	position: relative;
+	animation: back 500ms 1;
+}
+@keyframes back {
+	from {
+		transform: scale(0.95);
+	}
+	50% {
+		transform: scale(1.1);
+	}
+	to {
+		transform: scale(1);
+	}
+}
+.button--active {
+	animation: push 500ms 1;
+	box-shadow: inset 2px 2px 5px -2px rgba(4, 57, 107, 0.7);
+	transform: scale(0.95);
+}
+@keyframes push {
+	10% {
+		box-shadow: 8px 8px 10px rgba(4, 57, 107, 0);
+	}
+	50% {
+		transform: scale(1.1);
+		box-shadow: inset 2px 2px 5px -2px rgba(4, 57, 107, 0.4);
+	}
+	100% {
+		box-shadow: inset 2px 2px 5px -2px rgba(4, 57, 107, 0.7);
+		transform: scale(0.95);
+	}
+}
+.button--active .button__item {
+	box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 0.8);
+}
+.button__item {
+	box-shadow: -5px -5px 10px #fff;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	border-radius: 15px;
+}
+.button--size-small {
+	width: 50px;
+	height: 50px;
+}
+.button--size-medium {
+	width: 90px;
+	height: 90px;
+	padding: 5px;
+}
+.button--pop {
+	animation: pop 500ms 1;
+}
+@keyframes pop {
+	from {
+		transform: scale(0);
+		opacity: 0;
+	}
+	to {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
