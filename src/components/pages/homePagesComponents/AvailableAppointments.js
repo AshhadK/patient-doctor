@@ -16,7 +16,7 @@ const AvailableAppointments = ({ date }) => {
 	}, []);
 
 	return (
-		<div className="container availableAppoitments-container" style={{ marginTop: '100px', backgroundColor: '#efefef' }}>
+		<div className="container availableAppoitments-container" style={{ marginTop: '100px', backgroundColor: 'transparent' }}>
 			<div className="row ">
 				<div className="col section-title text-center">
 					<h2 className="text-center fwb cp" style={{ color: 'black' }}>

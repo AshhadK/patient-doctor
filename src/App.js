@@ -1,17 +1,15 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import Routes from './components/Routes';
 import { UserProvider } from './components/useAuth';
 import { toast } from 'react-toastify';
-import {auth} from './firebase/service'
+import { auth } from './firebase/service';
 
 toast.configure({
 	autoClose: 3000,
 	draggable: false,
 	//etc you get the idea
 });
-
-
 
 function App() {
 	// useEffect(()=> {

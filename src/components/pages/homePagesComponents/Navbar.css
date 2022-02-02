@@ -1,40 +1,38 @@
-* {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-	text-decoration: none;
-	list-style: none;
-	font-family: 'Poppins', 'sans-serif';
+.home-head {
+	text-shadow: 0 0 3px, 0 0 5px rgb(0, 0, 0);
+	color: rgba(255, 255, 255, 0.767);
+	font-weight: bold;
 }
-
-.main {
+.footer-div {
+	position: relative;
+	height: 200px;
+	width: 100%;
+	background-color: rgba(24, 144, 255, 0.8);
+	border-top: 1px solid rgb(255, 255, 255);
+}
+.my-nav-bar {
 	position: fixed;
 	top: 0px;
-	z-index: 999;
 	max-height: 70px;
 	width: 100%;
 	background: none;
-	background-color: rgba(24, 144, 255);
-	border-bottom: 1px solid lightseagreen;
 	margin: 0;
 	padding: 0;
+	background-color: rgba(255, 255, 255, 0.8);
+	border-bottom: 2px solid #3f51b5;
+	z-index: 999;
 }
-
-nav ul {
+.my-nav-bar ul {
+	color: rgb(0, 0, 0);
 	width: 96.5%;
 	margin: 1.35%;
-	padding-left: 35%;
+	padding-left: 45%;
 }
-nav ul li {
-	color: #fff;
-	margin-left: 5%;
+.my-nav-bar ul li {
+	color: rgb(0, 0, 0);
+	margin-left: 10%;
 	display: inline-block;
 	font-size: 18px;
-}
-nav ul a {
-	text-transform: uppercase;
-	font-size: 18px;
-	text-decoration: none;
 }
 .checklabel {
 	padding: 0;
@@ -44,207 +42,16 @@ nav ul a {
 #threebar {
 	display: none;
 }
-nav ul li:hover,
-nav ul a:hover {
+.my-nav-bar ul a {
+	color: rgb(0, 0, 0);
+	cursor: pointer;
+	text-transform: uppercase;
+}
+.my-nav-bar ul a:hover {
 	color: rgb(0, 0, 0);
 	cursor: pointer;
 }
-nav ul li:active,
-nav ul a:active {
+.my-nav-bar ul li:active,
+.my-nav-bar ul a:active {
 	color: red;
-}
-.namelogo {
-	float: left;
-}
-.heading {
-	position: relative;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	background-size: cover;
-	background-position: center;
-	color: #fff;
-	padding-top: 110px;
-	min-height: 500px;
-	letter-spacing: 2px;
-	border-bottom: 1px solid lightseagreen;
-}
-.logo {
-	width: 295px;
-	margin-top: -30px;
-	margin-left: 85px;
-	line-height: 1;
-	margin-bottom: 10px;
-}
-.name {
-	margin-left: 70px;
-	text-align: center;
-	font-size: 80px;
-	line-height: 1.5;
-	color: rgba(255, 255, 255, 0.9);
-	border-bottom: solid rgba(221, 216, 216, 0.8) 2px;
-}
-
-.name2 {
-	margin-left: 70px;
-	text-align: center;
-	margin-top: -50px;
-	font-size: 70px;
-	color: rgba(255, 255, 255);
-}
-.footer-wave .wave-decoration svg path {
-	fill: lightseagreen;
-}
-footer > div {
-	background-color: lightseagreen;
-	height: 250px;
-	margin-top: -7px;
-}
-.foot {
-	color: whitesmoke;
-}
-.footer-content {
-	text-align: center;
-}
-.foot .footer-content a {
-	color: whitesmoke;
-	text-decoration: none;
-}
-.foot .footer-content a :hover {
-	color: black;
-}
-.icons-footer {
-	text-align: center;
-}
-.icons-footer a {
-	color: whitesmoke;
-}
-.icons-footer a :hover {
-	color: black;
-}
-.copyright {
-	text-align: center;
-	font-size: 12px;
-	opacity: 0.8;
-}
-.developers {
-	text-align: center;
-}
-
-@media only screen and (max-width: 1400px) {
-	nav ul {
-		width: 96.5%;
-		margin: 1.5%;
-		padding-left: 33%;
-	}
-}
-@media only screen and (max-width: 1200px) {
-	nav ul {
-		width: 96.5%;
-		margin: 1.5%;
-		padding-left: 20%;
-	}
-}
-@media only screen and (max-width: 1000px) {
-	.logo {
-		width: 100px;
-		margin-left: 30px;
-	}
-	.name,
-	.name2 {
-		font-size: 32px;
-		margin-left: 10px;
-	}
-	.heading {
-		min-height: 300px;
-		padding-top: 120px;
-	}
-	.developers {
-		font-size: 10px;
-	}
-	.main {
-		height: 60px;
-	}
-	.row,
-	.navRow {
-		width: 100%;
-		position: fixed;
-	}
-	.main,
-	.row,
-	.navRow {
-		margin: 0;
-		padding: 0;
-	}
-	nav ul li {
-		display: block;
-		padding: 0;
-		font-size: 20px;
-		color: white;
-		margin-top: 22%;
-		border-bottom: 1px solid rgba(225, 181, 101, 0.207);
-	}
-	nav ul a {
-		font-size: 20px;
-		color: white;
-		border-bottom: 1px solid rgba(225, 181, 101, 0.207);
-	}
-	nav ul {
-		width: 100%;
-		margin: 0;
-		padding-left: 0;
-		position: fixed;
-		height: 745px;
-		background: rgba(32, 178, 170, 0.9);
-		top: 55px;
-		left: 100%;
-		text-align: center;
-		border: solid 2px rgba(0, 0, 0, 0.241);
-		transition: all 0.5s;
-	}
-	nav ul li:hover,
-	nav ul a:hover {
-		color: black;
-		cursor: pointer;
-	}
-	#bars:hover,
-	#cross:hover {
-		cursor: pointer;
-	}
-	.checklabel {
-		display: block;
-		font-size: 30px;
-		text-align: right;
-		padding: 1% 3% 0 3%;
-	}
-	#cross {
-		display: none;
-		color: lightseagreen;
-	}
-	#bars {
-		color: lightseagreen;
-	}
-	#threebar:checked ~ ul {
-		left: 0;
-		color: lightseagreen;
-	}
-	#threebar:checked ~ .checklabel #bars {
-		transition: 0.5s;
-		display: none;
-	}
-	#threebar:checked ~ .checklabel #cross {
-		transition: 0.5s;
-		display: inline-block;
-		font-size: 32px;
-	}
-	.checklabel small {
-		position: relative;
-		font-size: 18px;
-		bottom: 3px;
-		right: 60%;
-		font-weight: bolder;
-	}
-	.checklabel small a {
-		color: inherit;
-		text-decoration: none;
-	}
 }

@@ -6,12 +6,12 @@ import FeatureItem from './homePagesComponents/FeatureItem';
 import './Home.css';
 import Navbar from './homePagesComponents/Navbar';
 
-const Home = () => {
+const AboutUs = (props) => {
 	return (
 		<>
-			<div className="main-home-page">
+			<div className="main-about-page">
 				<Navbar />
-				<HeaderBottom/>
+				<HeaderBottom {...props} />
 				<Header />
 				<Footer />
 			</div>
@@ -19,4 +19,4 @@ const Home = () => {
 	);
 };
 
-export default Home;
+export default AboutUs;

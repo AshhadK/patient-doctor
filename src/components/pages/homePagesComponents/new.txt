@@ -1,0 +1,55 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+const Navbar = () => {
+	const checkUserStatus = () => {
+		if (localStorage.getItem('login_status') === 'true') {
+			return true;
+		}
+		return false;
+	};
+	return (
+		<nav>
+			<div>
+				<ul>
+					<li>
+						<Link>
+							Home <span>(current)</span>
+						</Link>
+					</li>
+					{localStorage.getItem('status_login') === 'false' ? (
+						<>
+							<li>
+								<Link to="/login">
+									Login
+								</Link>
+							</li>
+							<li>
+								<Link to="/about">
+									About Us
+								</Link>
+							</li>
+							<li>
+								<Link to="/signup">
+									Register
+								</Link>
+							</li>
+						</>
+					) : (
+						<li>
+							<Link
+							 								onClick={() => {
+									localStorage.setItem('status_login', 'false');
+								}}
+							>
+								Logout
+							</Link>
+						</li>
+					)}
+				</ul>
+			</div>
+		</nav>
+	);
+};
+
+export default Navbar;

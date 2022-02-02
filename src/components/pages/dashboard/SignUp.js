@@ -5,8 +5,9 @@ import { IconButton } from '@material-ui/core';
 import MicIcon from '@material-ui/icons/Mic';
 import MicOffIcon from '@material-ui/icons/MicOff';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
-import { auth } from '../../../firebase/service'
+import { auth } from '../../../firebase/service';
 import './Auth.css';
+import Speech from '../homePagesComponents/Speech';
 
 const Dashboard = () => {
 	const history = useHistory();
@@ -65,98 +66,27 @@ const Dashboard = () => {
 			notify('Confirm Password field is required!');
 			localStorage.setItem('status_login', 'false');
 		} else {
-
 			auth.createUserWithEmailAndPassword(email, password)
-			.then((userCredential) => {
-				// Signed in 
-				var user = userCredential.user;
-				history.push('/login')
-				// ...
-			})
-			.catch((error) => {
-				var errorCode = error.code;
-				var errorMessage = error.message;
-				notify(errorMessage);
-				history.push('/signup')
+				.then((userCredential) => {
+					// Signed in
+					var user = userCredential.user;
+					history.push('/login');
+					// ...
+				})
+				.catch((error) => {
+					var errorCode = error.code;
+					var errorMessage = error.message;
+					notify(errorMessage);
+					history.push('/signup');
 
-				// ..
-			});
+					// ..
+				});
 			localStorage.setItem('status_login', 'true');
 			// history.push('/login');
 		}
-
-		
 	};
 
 	return (
-		// <div className="containers">
-		// 	<div className="screen">
-		// 		<div className="screen__content">
-		// 			<form className="login" onSubmit={signupHandler}>
-		// 				<div className="login__field">
-		// 					<EmailIcon className="login__icon" style={{ paddingRight: '5px', paddingLeft: '3px' }} />
-		// 					<input
-		// 						type="text"
-		// 						className="login__input"
-		// 						placeholder="User name / Email"
-		// value={email}
-		// onChange={(e) => setEmail(e.target.value)}
-		// 					/>
-		// {status && (
-		// 	<IconButton onClick={emailListener}>{listening ? <MicIcon /> : <MicOffIcon />}</IconButton>
-		// )}
-		// 				</div>
-		// 				<div className="login__field">
-		// 					<VisibilityIcon className="login__icon" style={{ paddingRight: '5px', paddingLeft: '3px' }} />
-		// 					<input
-		// 						type="password"
-		// 						className="login__input"
-		// 						placeholder="Password"
-		// value={password}
-		// onChange={(e) => setPassword(e.target.value)}
-		// 					/>
-		// 					{status && (
-		// 						<IconButton onClick={passwordListener}>{listening ? <MicIcon /> : <MicOffIcon />}</IconButton>
-		// 					)}
-		// 				</div>
-		// 				<div className="login__field">
-		// 					<VisibilityIcon className="login__icon" style={{ paddingRight: '5px', paddingLeft: '3px' }} />
-		// 					<input
-		// 						type="password"
-		// 						className="login__input"
-		// 						placeholder="Confirm Password"
-		// value={confpassword}
-		// onChange={(e) => setConfPassword(e.target.value)}
-		// 					/>
-		// 					{status && (
-		// 						<IconButton onClick={confirmpasswordListener}>
-		// 							{listening ? <MicIcon /> : <MicOffIcon />}
-		// 						</IconButton>
-		// 					)}
-		// 				</div>
-		// 				<div style={{ display: 'flex', alignItems: 'center' }}>
-		// 					<button className="button login__submit">
-		// 						<span className="button__text">Sign Up</span>
-		// 					</button>
-		// {status && (
-		// 	<>
-		// 		<br />
-		// 		<br />
-		// 		<IconButton onClick={loginListener}>{listening ? <MicIcon /> : <MicOffIcon />}</IconButton>
-		// 	</>
-		// )}
-		// 				</div>
-		// 			</form>
-		// 		</div>
-		// 		<div className="screen__background">
-		// 			<span className="screen__background__shape screen__background__shape4" />
-		// 			<span className="screen__background__shape screen__background__shape3" />
-		// 			<span className="screen__background__shape screen__background__shape2" />
-		// 			<span className="screen__background__shape screen__background__shape1" />
-		// 		</div>
-		// 	</div>
-		// </div>
-
 		<div className="containers sign-up-mode">
 			<div className="forms-container">
 				<div className="signin-signup">

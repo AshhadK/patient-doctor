@@ -1,0 +1,44 @@
+/* Footer================ */
+.footer-wave .wave-decoration svg path {
+	fill: #3f51b5;
+}
+.footer-wave {
+	margin-top: 200px;
+	box-sizing: border-box;
+}
+.foot {
+	color: rgb(255, 255, 255);
+	display: block;
+	background-color: #3f51b5;
+	width: 100%;
+}
+.foot .footer-content a :hover {
+	color: rgb(255, 255, 255);
+}
+.icons-footer {
+	text-align: center;
+}
+.icons-footer a {
+	font-size: 18px;
+	color: rgb(255, 255, 255);
+}
+.icons-footer a :hover {
+	color: rgb(0, 0, 0);
+}
+.copyright {
+	text-align: center;
+	font-size: 16px;
+	opacity: 0.8;
+}
+.developers {
+	text-align: center;
+}
+
+.st0 {
+	opacity: 0.25;
+	enable-background: new;
+}
+.st1 {
+	opacity: 0.35;
+	enable-background: new;
+}

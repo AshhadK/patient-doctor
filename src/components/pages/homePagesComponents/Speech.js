@@ -17,8 +17,10 @@ const Dictaphone = () => {
 			history.push('/patientinfo');
 		} else if (transcript && transcript.toString().toLowerCase().includes('login')) {
 			history.push('/login');
-		}else if (transcript && transcript.toString().toLowerCase().includes('register')) {
+		} else if (transcript && transcript.toString().toLowerCase().includes('register')) {
 			history.push('/signup');
+		} else if (transcript && transcript.toString().toLowerCase().includes('about')) {
+			history.push('/about');
 		}
 	}, [transcript]);
 
@@ -30,7 +32,7 @@ const Dictaphone = () => {
 		<div>
 			<small>
 				{listening ? <MicIcon /> : <MicOffIcon />}
-				{listening ? 'Listening...' : 'Please Click on Start to open mike'}
+				{listening ? 'Listening...' : 'Please Click on Start to open mic'}
 			</small>
 			<br />
 			<Button variant="contained" color="primary" style={{ marginRight: '5px' }} onClick={SpeechRecognition.startListening}>

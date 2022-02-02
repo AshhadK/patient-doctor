@@ -5,8 +5,7 @@ import { IconButton } from '@material-ui/core';
 import MicIcon from '@material-ui/icons/Mic';
 import MicOffIcon from '@material-ui/icons/MicOff';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
-import { auth } from '../../../firebase/service'
-
+import { auth } from '../../../firebase/service';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import EmailIcon from '@material-ui/icons/Email';
 
@@ -64,22 +63,19 @@ const Dashboard = () => {
 			localStorage.setItem('status_login', 'false');
 		} else {
 			// history.push('/');
-			auth.signInWithEmailAndPassword(
-				email,
-				password
-			).then(user => {
-				localStorage.setItem('status_login', 'true');
-				localStorage.setItem('user_details', JSON.stringify(user.user))
-				history.push('/');
-				
-			}).catch(err => {
-				localStorage.setItem('status_login', 'false');
-				notify(err.message);
-				history.push('/login');
-
-			})
-		};
-
+			auth.signInWithEmailAndPassword(email, password)
+				.then((user) => {
+					localStorage.setItem('status_login', 'true');
+					localStorage.setItem('user_details', JSON.stringify(user.user));
+					history.push('/');
+				})
+				.catch((err) => {
+					console.log(err);
+					localStorage.setItem('status_login', 'false');
+					notify(err.message);
+					history.push('/login');
+				});
+		}
 	};
 
 	return (
