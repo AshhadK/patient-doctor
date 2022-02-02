@@ -2,22 +2,18 @@ body {
 	font-family: 'Poppins', sans-serif;
 	background-color: #ccc !important;
 }
-#main-home-page {
-	overflow: hidden;
-}
 .fwb {
 	font-weight: 700;
 }
-.main-home {
+.main-home-page {
 	background-color: #ccc;
 	background: linear-gradient(rgba(141, 153, 174, 0.8), rgba(141, 153, 174, 0.5)),
 		url('https://simplybook.me/build/images/dental.0419f54f.jpg') no-repeat fixed;
 
 	/* background:  linear-gradient(rgb(3, 3, 3), rgb(104, 104, 104)), url('https://simplybook.me/build/images/dental.0419f54f.jpg'); */
-	overflow-y: scroll;
 	overflow-x: hidden;
-	height: 100vh;
 	background-repeat: no-repeat;
+	height: 100vh;
 	background-size: cover;
 	width: 100vw;
 }
@@ -66,14 +62,6 @@ body {
 .home-location:hover {
 	background-image: linear-gradient(to right, #19d3b0, #0fcfe8);
 	transition: 1s;
-}
-.main-home-nav {
-	padding: 30px 30px !important;
-	padding-top: 35px;
-}
-#navbarNav {
-	z-index: 999;
-	width: 100vw;
 }
 .header-content {
 	margin-top: 100px;

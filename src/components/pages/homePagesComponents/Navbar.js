@@ -1,57 +1,67 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import './Navbar.css';
 
 const Navbar = () => {
-	const checkUserStatus = () => {
-		if (localStorage.getItem('login_status') === 'true') {
-			return true;
-		}
-		return false;
+	const history = useHistory();
+	const logout = () => {
+		localStorage.setItem('status_login', 'false');
+		history.push('/');
 	};
 	return (
-		<nav 
-			className="navbar navbar-expand-lg navbar-light fixed-top sticky-top"
-			id="nav1"
-		>
-			<div className="collapse navbar-collapse " id="navbarNav">
-				<ul className="navbar-nav ml-auto">
-					<li className="nav-item active">
-						<Link className="nav-link main-home-nav text-white" to="/">
-							Home <span className="sr-only">(current)</span>
+		<nav className="my-nav-bar">
+			<ul>
+				<li>
+					<i className="fa fa-home">
+						{' '}
+						<Link to="/">Home</Link>{' '}
+					</i>
+				</li>
+				<li>
+					<i className="fa fa-newspaper-o">
+						<Link to="/about">
+							<span></span> About Us
 						</Link>
-					</li>
-					{localStorage.getItem('status_login') === 'false' ? (
-						<>
-							<li className="nav-item">
-								<Link className="nav-link main-home-nav text-white" to="/login">
-									Login
+					</i>
+				</li>
+
+				{localStorage.getItem('status_login') && localStorage.getItem('status_login') === 'false' ? (
+					<>
+						<li>
+							<i className="fa fa-user">
+								<Link to="/signup">
+									<span> </span>Register
 								</Link>
-							</li>
-							<li className="nav-item">
-								<Link className="nav-link main-home-nav text-white" to="/about">
-									About Us
-								</Link>
-							</li>
-							<li className="nav-item">
-								<Link className="nav-link main-home-nav text-white" to="/signup">
-									Register
-								</Link>
-							</li>
-						</>
-					) : (
-						<li className="nav-item">
-							<Link
-								className="nav-link main-home-nav text-white"
-								onClick={() => {
-									localStorage.setItem('status_login', 'false');
-								}}
-							>
-								Logout
-							</Link>
+							</i>
 						</li>
-					)}
-				</ul>
-			</div>
+						<li>
+							<i className="fa fa-user">
+								<Link to="/login">
+									<span> </span>Login
+								</Link>
+							</i>
+						</li>
+					</>
+				) : (
+					<>
+						<li>
+							<i className="fa fa-book">
+								<Link to="/create-appointment">
+									<span> </span> Book
+								</Link>
+							</i>
+						</li>
+						<li>
+							<i className="fa fa-user">
+								<Link onClick={() => logout()}>
+									<span> </span> Logout
+								</Link>
+							</i>
+						</li>
+					</>
+				)}
+			</ul>
 		</nav>
 	);
 };

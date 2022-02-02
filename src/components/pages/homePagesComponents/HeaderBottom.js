@@ -9,6 +9,7 @@ import Speech from './Speech';
 import { UserContext } from '../../useAuth';
 import WebCamCapture from './WebCam';
 import { useHistory } from 'react-router-dom';
+import './Navbar.css';
 
 const Calender = () => {
 	const { handleSelectDate } = useContext(UserContext);
@@ -26,7 +27,10 @@ const Calender = () => {
 
 	return (
 		<>
-			<div className="bg-white sidebar-content shadow p-2 text-center">
+			<div
+				className="bg-white sidebar-content shadow p-2 text-center"
+				style={{ marginTop: '100px', backgroundColor: 'grey', width: '500px' }}
+			>
 				<h2 className="text-capitalize fwb">Appointment</h2>
 				<DatePickerCalendar date={date} onDateChange={setDate} locale={enGB} />
 			</div>
@@ -53,8 +57,14 @@ const HeaderBottom = ({ history }) => {
 		history.push('/webcam');
 	};
 
-	const patient = () => {
-		history.push('/patientinfo');
+	const patientDecide = () => {
+		const statusOfLogin = localStorage.getItem('status_login');
+
+		if (statusOfLogin === 'true') {
+			history.push('/patientinfo');
+		} else {
+			history.push('/login');
+		}
 	};
 	useEffect(() => {
 		if (history.location.pathname === '/create-appointment') {
@@ -63,15 +73,15 @@ const HeaderBottom = ({ history }) => {
 	}, [history]);
 
 	return (
-		<section style={{ marginTop: '60px' }}>
+		<section style={{ marginTop: '160px', marginBottom: '50px' }}>
 			<div className="row">
-				<div className="col-xl-7">{/* <div className="idebar-image mr-2"></div> */}</div>
+				<div className="col-xl-6"></div>
 				<div className="col-xl-5">
 					{appointment ? (
 						<Calender />
 					) : (
 						<div className="sidebar-content">
-							<h2 className="text-capitalize fwb">
+							<h2 className="home-head">
 								Your new smile <br /> starts here
 							</h2>
 							<p className="py-2" style={{ fontSize: '16px', fontWeight: 'bold' }}>
@@ -79,15 +89,14 @@ const HeaderBottom = ({ history }) => {
 								believe the difference is in the details! Your comfort is our top priority.
 							</p>
 
-							<button type="button" onClick={patient} className="btn mybtn ">
+							<button type="button" onClick={patientDecide} className="btn mybtn">
 								Patient Info
 							</button>
 							<br></br>
 							<br></br>
 							<button type="button" onClick={routeDecide} className="btn mybtn">
-								GET APPOINTMENT
+								Get Appointment
 							</button>
-							{/* <ChatIcon /> */}
 							<br></br>
 							<br></br>
 

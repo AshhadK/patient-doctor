@@ -3,16 +3,10 @@ import Navbar from './Navbar';
 import HeaderBottom from './HeaderBottom';
 import FeatureItem from './FeatureItem';
 
-const Header = (props) => {
+const Header = () => {
 	return (
 		<section className="main-home">
-			<div className="container">
-				<header>
-					<Navbar />
-					<HeaderBottom {...props} />
-				</header>
-				<section className="header-bottom-content-aria"></section>
-			</div>
+			<section className="header-bottom-content-aria"></section>
 			{window.location.pathname === '/' && (
 				<div className="container" style={{ marginTop: '90px' }}>
 					<div className="row pr-4 mr-4" style={{ paddingTop: '160px' }}>

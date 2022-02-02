@@ -2,22 +2,63 @@ import React, { useContext, useEffect, useState } from 'react';
 import './AppoitmentForm.css';
 import { UserContext } from '../../useAuth';
 import axios from 'axios';
+import { IconButton } from '@material-ui/core';
 import Loading from '../../uttiles/Loading';
+import MicIcon from '@material-ui/icons/Mic';
+import MicOffIcon from '@material-ui/icons/MicOff';
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import WebcamCapture from './WebCam';
 import VideoCallIcon from '@material-ui/icons/VideoCall';
 import { Button } from '@material-ui/core';
-import db from '../../../firebase/service'
+import db from '../../../firebase/service';
+import '../Home.css';
 
 const AppointmentForm = (props) => {
 	const notify = () => toast('Your Appoitnment Add Successfully!');
 	const { selectTedDate, cleaning } = useContext(UserContext);
+	const { transcript, listening, resetTranscript, browserSupportsSpeechRecognition } = useSpeechRecognition();
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
 	const [phone, setPhone] = useState('');
 	const [isLoading, setIsLoading] = useState(false);
+	const [status, setStatus] = useState(true);
 
+	useEffect(() => {
+		const msg = new window.SpeechSynthesisUtterance('This is the login page');
+		window.speechSynthesis.speak(msg);
+	}, []);
+	if (!browserSupportsSpeechRecognition) {
+		setStatus(false);
+	}
+
+	const emailListener = () => {
+		console.log(transcript);
+		resetTranscript();
+		SpeechRecognition.startListening();
+		setEmail(transcript);
+	};
+	const nameListener = () => {
+		console.log(transcript);
+		resetTranscript();
+		SpeechRecognition.startListening();
+		setName(transcript);
+	};
+
+	const phoneListener = () => {
+		resetTranscript();
+		SpeechRecognition.startListening();
+		setPhone(transcript);
+	};
+
+	const loginListener = () => {
+		resetTranscript();
+		SpeechRecognition.startListening();
+		if (transcript && transcript.toString().toLowerCase().includes('submit')) {
+			submitHandler();
+		}
+	};
 	const onCangeHandler = (e) => {
 		const { name, value } = e.target;
 		if (name === 'name') {
@@ -36,7 +77,9 @@ const AppointmentForm = (props) => {
 	};
 
 	const submitHandler = async (e) => {
-		e.preventDefault();
+		if (e) {
+			e.preventDefault();
+		}
 		if (selectTedDate && cleaning && name && email && phone) {
 			setIsLoading(true);
 			const formData = {
@@ -48,27 +91,27 @@ const AppointmentForm = (props) => {
 				date: selectTedDate,
 			};
 
-			const getUser = JSON.parse(localStorage.getItem("user_details"))
+			const getUser = JSON.parse(localStorage.getItem('user_details'));
 
-			db.collection(getUser.email).add({
-				clinicName: cleaning.name,
-				name,
-				email,
-				phone,
-				time: cleaning.time,
-				date: selectTedDate,
-				images:  localStorage.getItem('link')
-			})
-			.then((docRef) => {
-				console.log("Document written with ID: ", docRef.id);
-				setIsLoading(false);
-				props.history.push('/');
-
-			})
-			.catch((error) => {
-				console.error("Error adding document: ", error);
-				setIsLoading(false)
-			});
+			db.collection(getUser.email)
+				.add({
+					clinicName: cleaning.name,
+					name,
+					email,
+					phone,
+					time: cleaning.time,
+					date: selectTedDate,
+					images: localStorage.getItem('link'),
+				})
+				.then((docRef) => {
+					console.log('Document written with ID: ', docRef.id);
+					setIsLoading(false);
+					props.history.push('/');
+				})
+				.catch((error) => {
+					console.error('Error adding document: ', error);
+					setIsLoading(false);
+				});
 		} else {
 			alert('Invalid Form data');
 		}
@@ -112,7 +155,7 @@ const AppointmentForm = (props) => {
 											placeholder="Time"
 										/>
 									</div>
-									<div className="form-group">
+									<div className="form-group" style={{ display: 'flex', width: '320px' }}>
 										<input
 											type="text"
 											className="form-control"
@@ -122,8 +165,13 @@ const AppointmentForm = (props) => {
 											onChange={onCangeHandler}
 											placeholder="Your Name"
 										/>
+										{status && (
+											<IconButton onClick={nameListener}>
+												{listening ? <MicIcon /> : <MicOffIcon />}
+											</IconButton>
+										)}
 									</div>
-									<div className="form-group">
+									<div className="form-group" style={{ display: 'flex', width: '320px' }}>
 										<input
 											type="text"
 											className="form-control"
@@ -133,8 +181,13 @@ const AppointmentForm = (props) => {
 											onChange={onCangeHandler}
 											placeholder="Phone Number"
 										/>
+										{status && (
+											<IconButton onClick={phoneListener}>
+												{listening ? <MicIcon /> : <MicOffIcon />}
+											</IconButton>
+										)}
 									</div>
-									<div className="form-group">
+									<div className="form-group" style={{ display: 'flex', width: '320px' }}>
 										<input
 											type="email"
 											className="form-control"
@@ -144,8 +197,13 @@ const AppointmentForm = (props) => {
 											onChange={onCangeHandler}
 											placeholder="Email"
 										/>
+										{status && (
+											<IconButton onClick={emailListener}>
+												{listening ? <MicIcon /> : <MicOffIcon />}
+											</IconButton>
+										)}
 									</div>
-									<div className="form-group">
+									<div className="form-group" style={{ width: '300px' }}>
 										<input
 											type="text"
 											className="form-control"
@@ -154,18 +212,43 @@ const AppointmentForm = (props) => {
 											readOnly
 										/>
 									</div>
-									<div>
-										<Button type="submit" className="btn text-uppercase text-white" fullWidth variant="contained" color="primary">Submit</Button>
+									<div style={{ display: 'flex', width: '280px' }}>
 										<Button
+											style={{ height: '50px' }}
+											type="submit"
+											className="btn text-uppercase text-white"
 											fullWidth
-											className="btn text-uppercase  text-white mt-2" variant="contained" color="primary" 
-											onClick={() => {
-												clear();
-											}}
+											variant="contained"
+											color="primary"
 										>
-											Clear
+											Submit
 										</Button>
+										{status && (
+											<>
+												<IconButton onClick={loginListener}>
+													{listening ? <MicIcon /> : <MicOffIcon />}
+												</IconButton>
+											</>
+										)}
 									</div>
+									<Button
+										fullWidth
+										className="btn text-uppercase  text-white mt-2"
+										variant="contained"
+										color="primary"
+										onClick={() => {
+											clear();
+										}}
+									>
+										Clear
+									</Button>
+									{status && (
+										<>
+											<IconButton onClick={loginListener}>
+												{listening ? <MicIcon /> : <MicOffIcon />}
+											</IconButton>
+										</>
+									)}
 								</form>
 							</div>
 						</div>

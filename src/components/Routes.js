@@ -5,7 +5,7 @@ import AppointmentPage from './pages/AppointmentPage';
 import AppointmentForm from './pages/homePagesComponents/AppointmentForm';
 import Login from './pages/dashboard/Login';
 import SignUp from './pages/dashboard/SignUp';
-import AboutUs from './pages/dashboard/AboutUs';
+// import AboutUs from './pages/AboutUs';
 import DashboardAppointmentPage from './pages/dashboard/Appointments/DashboardAppointmentPage';
 import Patients from './pages/dashboard/patients/Patients';
 import PrivateRoute from './privateRoute/PrivateRoute';
@@ -17,7 +17,7 @@ import VideoCall from '../client/Home';
 
 const Routes = () => {
 	return (
-		<div style={{ backgroundColor: '#efefef'}}>
+		<div style={{ backgroundColor: '#efefef' }}>
 			<Switch>
 				<Route exact path="/" component={Home} />;
 				<Route path="/create-appointment" component={AppointmentPage} />;
@@ -29,8 +29,7 @@ const Routes = () => {
 					<Patients />
 				</PrivateRoute>
 				<Route path="/login" component={Login} />;
-				<Route path="/signup" component={SignUp} />;
-				<Route path="/about" component={AboutUs} />;
+				<Route path="/signup" component={SignUp} />;{/* <Route path="/about" component={AboutUs} />; */}
 				<Route path="/chat" component={Chat} />;
 				<Route path="/webcam" component={Webcam} />;
 				<Route path="/patientinfo" component={PatientInfo} />;
